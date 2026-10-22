@@ -9,9 +9,16 @@ index.html
 css/styles.css
 js/main.js
 img/README.md
-img/muestra-taller.svg
-img/muestra-llanta.svg
-img/muestra-camion.svg
+img/Logo grua.jpeg
+img/Taller Willy.jpeg
+img/Willy.jpeg
+img/Payloder.jpeg
+img/brigstone.jpeg
+img/Continental.png
+img/Firestone.png
+img/Michelin.png
+img/Tornel.jpeg
+img/Toyo.jpeg
 ```
 
 ## Ver localmente en Ubuntu
