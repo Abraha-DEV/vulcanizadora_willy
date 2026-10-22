@@ -109,6 +109,15 @@
   const status = document.querySelector('#business-status');
   if (status) {
     const statusCopy = status.querySelector('.status-copy');
+    const statusDetail = status.querySelector('.status-detail');
+    const formatTime = (minutes) => {
+      const hour = Math.floor(minutes / 60);
+      const minute = String(minutes % 60).padStart(2, '0');
+      const hour12 = hour % 12 || 12;
+      const period = hour < 12 ? 'a. m.' : 'p. m.';
+      return `${hour12}:${minute} ${period}`;
+    };
+
     const updateBusinessStatus = () => {
       const parts = new Intl.DateTimeFormat('en-US', {
         timeZone: 'America/Monterrey',
@@ -126,7 +135,19 @@
 
       status.classList.toggle('is-open', isOpen);
       status.classList.toggle('is-closed', !isOpen);
-      statusCopy.textContent = isOpen ? 'Abierto ahora' : 'Cerrado ahora';
+      statusCopy.textContent = isOpen ? 'Abierto' : 'Cerrado';
+
+      if (statusDetail) {
+        if (isOpen) {
+          statusDetail.textContent = `Cierra a las ${formatTime(closes)}`;
+        } else if (minutes < opens) {
+          statusDetail.textContent = `Abre hoy a las ${formatTime(opens)}`;
+        } else {
+          const nextWeekday = values.weekday === 'Sat' ? 'Sun' : 'Mon';
+          const nextOpening = nextWeekday === 'Sun' ? 9 * 60 : 7 * 60 + 20;
+          statusDetail.textContent = `Abre mañana a las ${formatTime(nextOpening)}`;
+        }
+      }
     };
 
     updateBusinessStatus();
