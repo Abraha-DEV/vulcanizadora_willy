@@ -29,3 +29,29 @@
 /* Oculta la barra nativa; el carrusel sigue usando controles, teclado y gesto táctil. */
 .brands-carousel{scrollbar-width:none;-ms-overflow-style:none}
 .brands-carousel::-webkit-scrollbar{display:none}
+
+/* Ajustes de composición para pantallas pequeñas */
+@media(max-width:680px){
+  .details-grid{align-items:start;gap:12px}
+  .detail-panel{min-width:0;min-height:0;padding:24px 20px}
+  .detail-panel>:not(.hours-logo){position:relative;z-index:1}
+  .detail-panel h2{font-size:clamp(40px,12vw,52px)}
+  .hours-logo{width:132px;height:132px;opacity:.09}
+  .hours-list{position:relative;margin-bottom:5px}
+  .hours-list div{gap:10px;padding:8px 0;font-size:11px}
+  .hours-list dd{text-align:right}
+  .location-address{margin:14px 0}
+  .location-address address{font-size:11px;line-height:1.6;overflow-wrap:anywhere}
+  .location-map{height:145px;margin-top:13px}
+  .map-note{margin-top:10px}
+}
+@media(max-width:480px){
+  .hero{display:block;min-height:0}
+  .hero-image{inset:0 0 auto;height:min(75.2vw,300px);background-color:#252922;background-position:center top;background-size:auto 100%;background-repeat:no-repeat}
+  .hero-shade{inset:0 0 auto;height:min(75.2vw,300px);background:linear-gradient(180deg,rgba(14,16,14,.08) 0%,rgba(14,16,14,.12) 55%,#252922 100%)}
+  .hero-content{padding:clamp(258px,calc(75.2vw + 18px),318px) 0 32px}
+  .hero h1{font-size:clamp(54px,14vw,68px);line-height:.9}
+  .hero-copy{max-width:100%;margin-bottom:22px}
+  .hero-note{position:relative;right:auto;bottom:auto;margin-top:22px}
+  .hero-actions .button{min-height:46px;padding-inline:15px}
+}
